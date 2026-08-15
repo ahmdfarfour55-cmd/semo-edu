@@ -55,6 +55,7 @@ function openSubject(subjectKey) {
 
         li.appendChild(titleSpan);
         li.appendChild(badgeSpan);
+
         modalLessons.appendChild(li);
     });
 
