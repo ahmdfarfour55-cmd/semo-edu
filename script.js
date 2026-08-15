@@ -45,10 +45,16 @@ function openSubject(subjectKey) {
     data.lessons.forEach(lesson => {
         const li = document.createElement('li');
         li.className = 'lesson-item';
-        li.innerHTML = `
-            <span>${lesson.title}</span>
-            <span class="lesson-badge">${lesson.badge}</span>
-        `;
+        
+        const titleSpan = document.createElement('span');
+        titleSpan.textContent = lesson.title;
+        
+        const badgeSpan = document.createElement('span');
+        badgeSpan.className = 'lesson-badge';
+        badgeSpan.textContent = lesson.badge;
+
+        li.appendChild(titleSpan);
+        li.appendChild(badgeSpan);
         modalLessons.appendChild(li);
     });
 
@@ -77,13 +83,27 @@ function addComment(e) {
     const commentsContainer = document.getElementById('commentsContainer');
     const newComment = document.createElement('div');
     newComment.className = 'comment-card';
-    newComment.innerHTML = `
-        <div class="comment-header">
-            <span class="comment-author">${name}</span>
-            <span class="stars">${rating}</span>
-        </div>
-        <p class="comment-text">${text}</p>
-    `;
+
+    const header = document.createElement('div');
+    header.className = 'comment-header';
+
+    const authorSpan = document.createElement('span');
+    authorSpan.className = 'comment-author';
+    authorSpan.textContent = name;
+
+    const ratingSpan = document.createElement('span');
+    ratingSpan.className = 'stars';
+    ratingSpan.textContent = rating;
+
+    header.appendChild(authorSpan);
+    header.appendChild(ratingSpan);
+
+    const commentParagraph = document.createElement('p');
+    commentParagraph.className = 'comment-text';
+    commentParagraph.textContent = text;
+
+    newComment.appendChild(header);
+    newComment.appendChild(commentParagraph);
 
     commentsContainer.prepend(newComment);
     document.getElementById('commentForm').reset();
