@@ -45,10 +45,10 @@ function openSubject(subjectKey) {
     data.lessons.forEach(lesson => {
         const li = document.createElement('li');
         li.className = 'lesson-item';
-        
+
         const titleSpan = document.createElement('span');
         titleSpan.textContent = lesson.title;
-        
+
         const badgeSpan = document.createElement('span');
         badgeSpan.className = 'lesson-badge';
         badgeSpan.textContent = lesson.badge;
